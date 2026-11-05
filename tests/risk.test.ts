@@ -1,0 +1,14 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {coordinate,assess,rank,meters,type Candidate,type Incident,type Flag} from '../src/risk.ts';
+const route:Candidate={geometry:{type:'LineString',coordinates:[[-90.52,14.62],[-90.52,14.64]]},distance:2200,duration:200,provider:'fixture'};
+const now=Date.parse('2026-11-05T12:00:00Z');
+const incident:Incident={id:'i',latitude:14.63,longitude:-90.52,severity:4,confidence:.8,occurred_at:'2026-11-05T12:00:00Z',type:'otro'};
+test('coordenadas y alcance se validan',()=>{assert.deepEqual(coordinate([-90.52,14.63]),[-90.52,14.63]);for(const v of [[0,0],[NaN,14.6],'abc',[14.63,-90.52]])assert.throws(()=>coordinate(v));});
+test('tres hechos únicos aumentan contribución',()=>{const one=assess(route,[incident],[],now);const three=assess(route,[incident,{...incident,id:'j'},{...incident,id:'k'}],[],now);assert.equal(three.value,3*one.value);assert.equal(three.uniqueIncidents,3);});
+test('duplicar evidencia del mismo id no aumenta frecuencia',()=>assert.equal(assess(route,[incident,incident],[],now).uniqueIncidents,1));
+test('decaimiento sigue semivida demostrativa',()=>assert.ok(Math.abs(assess(route,[incident],[],now+7*86400000).value-assess(route,[incident],[],now).value/2)<1e-8));
+test('sin evidencia no equivale a cobertura suficiente',()=>{const r=assess(route,[],[],now);assert.equal(r.value,0);assert.equal(r.coverage,'desconocida');});
+test('restricción no decae y conserva revisión',()=>{const f:Flag={id:'f',latitude:14.63,longitude:-90.52,radius_m:100,reason:'Simulación revisable',active:true,review_at:'2026-12-01'};assert.equal(assess(route,[],[f],now+100*86400000).restrictions[0].decay,false);assert.equal(assess(route,[],[{...f,active:false}],now).restrictions.length,0);});
+test('perfiles coincidentes no fabrican alternativas',()=>{const r=rank([route],[],[],now);assert.equal(r.length,1);assert.equal(r[0].profiles.length,3);});
+test('perfiles de riesgo pueden elegir un candidato distinto',()=>{const away:Candidate={...route,geometry:{type:'LineString',coordinates:[[-90.54,14.62],[-90.54,14.64]]},duration:240};const r=rank([route,away],[incident],[],now);assert.equal(r.find(x=>x.profiles.includes('rapida'))?.id,'ruta-1');assert.equal(r.find(x=>x.profiles.includes('menor_riesgo_estimado'))?.id,'ruta-2');});
+test('métrica de proximidad positiva',()=>assert.ok(meters([-90.52,14.63],[-90.52,14.64])>1000));

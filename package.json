@@ -1,0 +1,36 @@
+{
+  "name": "gtvs-2027",
+  "version": "2.0.0-dev.1",
+  "private": true,
+  "type": "module",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "tsc --noEmit && vite build",
+    "dev": "vite --host 127.0.0.1",
+    "api": "tsx src/local.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "db:migrate": "tsx scripts/migrate.ts",
+    "admin": "tsx scripts/admin.ts",
+    "test:integration": "tsx scripts/integration.ts"
+  },
+  "dependencies": {
+    "@neon/auth": "^0.8.2",
+    "@neon/config": "^1.11.3",
+    "@neon/env": "^1.6.15",
+    "@neon/functions": "^0.11.0",
+    "dotenv": "^18.0.9",
+    "hono": "^4.13.16",
+    "jose": "^6.2.15",
+    "leaflet": "^1.9.4",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@hono/node-server": "^2.1.6",
+    "@types/leaflet": "^1.9.22",
+    "@types/node": "^26.6.6",
+    "@types/pg": "^8.23.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6"
+  }
+}

@@ -26,3 +26,4 @@ datos/
 *.sqlite3-*
 *.log
 .DS_Store
+.pages-deploy/
