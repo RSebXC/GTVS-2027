@@ -1,0 +1,22 @@
+test_error_de_dominio_en_api (test_prototipo.ApiTests.test_error_de_dominio_en_api) ... ok
+test_moderacion_requiere_token (test_prototipo.ApiTests.test_moderacion_requiere_token) ... ok
+test_recorrido_http_completo (test_prototipo.ApiTests.test_recorrido_http_completo) ... ok
+test_web_y_archivos_privados (test_prototipo.ApiTests.test_web_y_archivos_privados) ... ok
+test_aceptar_nuevo_hecho_y_persistencia (test_prototipo.DominioTests.test_aceptar_nuevo_hecho_y_persistencia) ... ok
+test_conflicto_de_revision (test_prototipo.DominioTests.test_conflicto_de_revision) ... ok
+test_decaimiento_temporal_disminuye_contribucion (test_prototipo.DominioTests.test_decaimiento_temporal_disminuye_contribucion) ... ok
+test_dijkstra_contra_enumeracion_independiente (test_prototipo.DominioTests.test_dijkstra_contra_enumeracion_independiente) ... ok
+test_entradas_invalidas (test_prototipo.DominioTests.test_entradas_invalidas) ... ok
+test_fecha_desconocida_no_es_reciente (test_prototipo.DominioTests.test_fecha_desconocida_no_es_reciente) ... ok
+test_idempotencia_y_conflicto (test_prototipo.DominioTests.test_idempotencia_y_conflicto) ... ok
+test_informacion_faltante_no_es_cero (test_prototipo.DominioTests.test_informacion_faltante_no_es_cero) ... ok
+test_pendiente_no_modifica_riesgo (test_prototipo.DominioTests.test_pendiente_no_modifica_riesgo) ... ok
+test_rechazar_no_crea_incidente_y_deja_auditoria (test_prototipo.DominioTests.test_rechazar_no_crea_incidente_y_deja_auditoria) ... ok
+test_reenvios_concurrentes_no_duplican (test_prototipo.DominioTests.test_reenvios_concurrentes_no_duplican) ... ok
+test_ruta_conectada_y_no_inventa_alternativas (test_prototipo.DominioTests.test_ruta_conectada_y_no_inventa_alternativas) ... ok
+test_vincular_mismo_hecho_no_aumenta_frecuencia (test_prototipo.DominioTests.test_vincular_mismo_hecho_no_aumenta_frecuencia) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.823s
+
+OK

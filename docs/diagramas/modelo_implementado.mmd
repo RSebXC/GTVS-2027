@@ -1,0 +1,36 @@
+erDiagram
+ INCIDENTES o|--o{ REPORTES : consolida
+ REPORTES ||--o{ REVISIONES : registra
+ INCIDENTES o|--o{ REVISIONES : destino
+ INCIDENTES {
+  TEXT id PK
+  TEXT tramo
+  INTEGER gravedad
+  TEXT ocurrido_en
+  REAL respaldo
+  TEXT estado
+ }
+ REPORTES {
+  TEXT id PK
+  TEXT actor
+  TEXT tipo
+  TEXT tramo
+  INTEGER gravedad
+  TEXT ocurrido_en
+  TEXT descripcion
+  TEXT recibido_en
+  TEXT estado
+  TEXT incidente_id FK
+  TEXT clave
+  TEXT huella
+  INTEGER revision
+ }
+ REVISIONES {
+  TEXT id PK
+  TEXT reporte_id FK
+  TEXT decision
+  TEXT motivo
+  TEXT realizada_en
+  INTEGER revision_anterior
+  TEXT incidente_id FK
+ }

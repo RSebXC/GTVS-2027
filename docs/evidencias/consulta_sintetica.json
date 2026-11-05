@@ -1,0 +1,577 @@
+{
+  "escenario": {
+    "sintetico": true,
+    "version_red": "red-sintetica-v1",
+    "nodos": [
+      {
+        "id": "A",
+        "nombre": "Punto A",
+        "x": 100,
+        "y": 90
+      },
+      {
+        "id": "B",
+        "nombre": "Punto B",
+        "x": 360,
+        "y": 90
+      },
+      {
+        "id": "C",
+        "nombre": "Punto C",
+        "x": 620,
+        "y": 90
+      },
+      {
+        "id": "D",
+        "nombre": "Punto D",
+        "x": 100,
+        "y": 260
+      },
+      {
+        "id": "E",
+        "nombre": "Punto E",
+        "x": 360,
+        "y": 260
+      },
+      {
+        "id": "F",
+        "nombre": "Punto F",
+        "x": 620,
+        "y": 260
+      },
+      {
+        "id": "G",
+        "nombre": "Punto G",
+        "x": 100,
+        "y": 430
+      },
+      {
+        "id": "H",
+        "nombre": "Punto H",
+        "x": 360,
+        "y": 430
+      },
+      {
+        "id": "I",
+        "nombre": "Punto I",
+        "x": 620,
+        "y": 430
+      }
+    ],
+    "tramos": [
+      {
+        "id": "AB",
+        "origen": "A",
+        "destino": "B",
+        "distancia_m": 200,
+        "tiempo_s": 20,
+        "cobertura": true,
+        "bidireccional": true
+      },
+      {
+        "id": "BC",
+        "origen": "B",
+        "destino": "C",
+        "distancia_m": 200,
+        "tiempo_s": 20,
+        "cobertura": true,
+        "bidireccional": true
+      },
+      {
+        "id": "CF",
+        "origen": "C",
+        "destino": "F",
+        "distancia_m": 200,
+        "tiempo_s": 20,
+        "cobertura": true,
+        "bidireccional": true
+      },
+      {
+        "id": "FI",
+        "origen": "F",
+        "destino": "I",
+        "distancia_m": 200,
+        "tiempo_s": 20,
+        "cobertura": true,
+        "bidireccional": true
+      },
+      {
+        "id": "AD",
+        "origen": "A",
+        "destino": "D",
+        "distancia_m": 260,
+        "tiempo_s": 30,
+        "cobertura": true,
+        "bidireccional": true
+      },
+      {
+        "id": "DE",
+        "origen": "D",
+        "destino": "E",
+        "distancia_m": 260,
+        "tiempo_s": 30,
+        "cobertura": true,
+        "bidireccional": true
+      },
+      {
+        "id": "EF",
+        "origen": "E",
+        "destino": "F",
+        "distancia_m": 260,
+        "tiempo_s": 30,
+        "cobertura": true,
+        "bidireccional": true
+      },
+      {
+        "id": "DG",
+        "origen": "D",
+        "destino": "G",
+        "distancia_m": 330,
+        "tiempo_s": 45,
+        "cobertura": true,
+        "bidireccional": true
+      },
+      {
+        "id": "GH",
+        "origen": "G",
+        "destino": "H",
+        "distancia_m": 330,
+        "tiempo_s": 45,
+        "cobertura": true,
+        "bidireccional": true
+      },
+      {
+        "id": "HI",
+        "origen": "H",
+        "destino": "I",
+        "distancia_m": 330,
+        "tiempo_s": 45,
+        "cobertura": true,
+        "bidireccional": true
+      },
+      {
+        "id": "BE",
+        "origen": "B",
+        "destino": "E",
+        "distancia_m": 220,
+        "tiempo_s": 25,
+        "cobertura": true,
+        "bidireccional": true
+      },
+      {
+        "id": "EH",
+        "origen": "E",
+        "destino": "H",
+        "distancia_m": 220,
+        "tiempo_s": 25,
+        "cobertura": false,
+        "bidireccional": true
+      }
+    ],
+    "perfiles": {
+      "rapida": {
+        "nombre": "Rápida",
+        "distancia": 0.0,
+        "tiempo": 1.0,
+        "riesgo": 0.0
+      },
+      "equilibrada": {
+        "nombre": "Equilibrada",
+        "distancia": 0.15,
+        "tiempo": 1.0,
+        "riesgo": 1.5
+      },
+      "menor_riesgo_estimado": {
+        "nombre": "Menor riesgo estimado",
+        "distancia": 0.0,
+        "tiempo": 0.1,
+        "riesgo": 10.0
+      }
+    },
+    "modelo": {
+      "version": "demostracion-v1",
+      "semivida_dias": 7,
+      "referencia_tiempo_s": 60,
+      "referencia_distancia_m": 1000,
+      "referencia_costo_riesgo": 1,
+      "advertencia": "Parámetros ilustrativos, sin calibración ni validez predictiva."
+    },
+    "revision": 1,
+    "semilla_en": "2026-11-05T00:51:27.016232+00:00",
+    "advertencia": "Red abstracta y evidencia ficticia. No utilizar para desplazamientos reales."
+  },
+  "consulta_A_I": {
+    "revision": 1,
+    "calculado_en": "2026-11-05T00:51:27.018536+00:00",
+    "version_red": "red-sintetica-v1",
+    "modelo": {
+      "version": "demostracion-v1",
+      "semivida_dias": 7,
+      "referencia_tiempo_s": 60,
+      "referencia_distancia_m": 1000,
+      "referencia_costo_riesgo": 1,
+      "advertencia": "Parámetros ilustrativos, sin calibración ni validez predictiva."
+    },
+    "riesgos": {
+      "AB": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "BC": {
+        "valor": 4.62102,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 2,
+        "contribuciones": [
+          {
+            "incidente_id": "inc-demo-1",
+            "gravedad_demo": 4,
+            "antiguedad_dias": 1.0,
+            "respaldo_demo": 0.8,
+            "influencia_espacial_demo": 1,
+            "contribucion": 2.898316
+          },
+          {
+            "incidente_id": "inc-demo-2",
+            "gravedad_demo": 3,
+            "antiguedad_dias": 2.0,
+            "respaldo_demo": 0.7,
+            "influencia_espacial_demo": 1,
+            "contribucion": 1.722704
+          }
+        ]
+      },
+      "CF": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "FI": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "AD": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "DE": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "EF": {
+        "valor": 1.449158,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 1,
+        "contribuciones": [
+          {
+            "incidente_id": "inc-demo-3",
+            "gravedad_demo": 2,
+            "antiguedad_dias": 1.0,
+            "respaldo_demo": 0.8,
+            "influencia_espacial_demo": 1,
+            "contribucion": 1.449158
+          }
+        ]
+      },
+      "DG": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "GH": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "HI": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "BE": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "EH": {
+        "valor": null,
+        "suficiencia": "informacion_insuficiente",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      }
+    },
+    "sintetico": true,
+    "origen": "A",
+    "destino": "I",
+    "alternativas": [
+      {
+        "id": "alternativa-1",
+        "perfiles": [
+          "rapida"
+        ],
+        "costos_por_perfil": {
+          "rapida": 1.333333
+        },
+        "nodos": [
+          "A",
+          "B",
+          "C",
+          "F",
+          "I"
+        ],
+        "tramos": [
+          "AB",
+          "BC",
+          "CF",
+          "FI"
+        ],
+        "distancia_m": 800,
+        "tiempo_estimado_s": 80,
+        "costo_riesgo_relativo": 0.924204,
+        "sin_informacion": [],
+        "suficiencia": "cobertura_sintetica_declarada"
+      },
+      {
+        "id": "alternativa-2",
+        "perfiles": [
+          "equilibrada"
+        ],
+        "costos_por_perfil": {
+          "equilibrada": 2.280505
+        },
+        "nodos": [
+          "A",
+          "B",
+          "E",
+          "F",
+          "I"
+        ],
+        "tramos": [
+          "AB",
+          "BE",
+          "EF",
+          "FI"
+        ],
+        "distancia_m": 880,
+        "tiempo_estimado_s": 95,
+        "costo_riesgo_relativo": 0.376781,
+        "sin_informacion": [],
+        "suficiencia": "cobertura_sintetica_declarada"
+      },
+      {
+        "id": "alternativa-3",
+        "perfiles": [
+          "menor_riesgo_estimado"
+        ],
+        "costos_por_perfil": {
+          "menor_riesgo_estimado": 0.275
+        },
+        "nodos": [
+          "A",
+          "D",
+          "G",
+          "H",
+          "I"
+        ],
+        "tramos": [
+          "AD",
+          "DG",
+          "GH",
+          "HI"
+        ],
+        "distancia_m": 1250,
+        "tiempo_estimado_s": 165,
+        "costo_riesgo_relativo": 0.0,
+        "sin_informacion": [],
+        "suficiencia": "cobertura_sintetica_declarada"
+      }
+    ],
+    "no_disponibles": [],
+    "politica_faltantes": "Los perfiles con riesgo excluyen tramos sin información. Esto no demuestra que sean más seguros.",
+    "advertencia": "Resultados computacionales sobre datos ficticios; no son recomendaciones para la Ciudad de Guatemala."
+  },
+  "consulta_E_H": {
+    "revision": 1,
+    "calculado_en": "2026-11-05T00:51:27.018536+00:00",
+    "version_red": "red-sintetica-v1",
+    "modelo": {
+      "version": "demostracion-v1",
+      "semivida_dias": 7,
+      "referencia_tiempo_s": 60,
+      "referencia_distancia_m": 1000,
+      "referencia_costo_riesgo": 1,
+      "advertencia": "Parámetros ilustrativos, sin calibración ni validez predictiva."
+    },
+    "riesgos": {
+      "AB": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "BC": {
+        "valor": 4.62102,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 2,
+        "contribuciones": [
+          {
+            "incidente_id": "inc-demo-1",
+            "gravedad_demo": 4,
+            "antiguedad_dias": 1.0,
+            "respaldo_demo": 0.8,
+            "influencia_espacial_demo": 1,
+            "contribucion": 2.898316
+          },
+          {
+            "incidente_id": "inc-demo-2",
+            "gravedad_demo": 3,
+            "antiguedad_dias": 2.0,
+            "respaldo_demo": 0.7,
+            "influencia_espacial_demo": 1,
+            "contribucion": 1.722704
+          }
+        ]
+      },
+      "CF": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "FI": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "AD": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "DE": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "EF": {
+        "valor": 1.449158,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 1,
+        "contribuciones": [
+          {
+            "incidente_id": "inc-demo-3",
+            "gravedad_demo": 2,
+            "antiguedad_dias": 1.0,
+            "respaldo_demo": 0.8,
+            "influencia_espacial_demo": 1,
+            "contribucion": 1.449158
+          }
+        ]
+      },
+      "DG": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "GH": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "HI": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "BE": {
+        "valor": 0,
+        "suficiencia": "cobertura_sintetica_declarada",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      },
+      "EH": {
+        "valor": null,
+        "suficiencia": "informacion_insuficiente",
+        "incidentes_unicos": 0,
+        "contribuciones": []
+      }
+    },
+    "sintetico": true,
+    "origen": "E",
+    "destino": "H",
+    "alternativas": [
+      {
+        "id": "alternativa-1",
+        "perfiles": [
+          "rapida"
+        ],
+        "costos_por_perfil": {
+          "rapida": 0.416667
+        },
+        "nodos": [
+          "E",
+          "H"
+        ],
+        "tramos": [
+          "EH"
+        ],
+        "distancia_m": 220,
+        "tiempo_estimado_s": 25,
+        "costo_riesgo_relativo": null,
+        "sin_informacion": [
+          "EH"
+        ],
+        "suficiencia": "informacion_insuficiente"
+      },
+      {
+        "id": "alternativa-2",
+        "perfiles": [
+          "equilibrada",
+          "menor_riesgo_estimado"
+        ],
+        "costos_por_perfil": {
+          "equilibrada": 2.138,
+          "menor_riesgo_estimado": 0.2
+        },
+        "nodos": [
+          "E",
+          "D",
+          "G",
+          "H"
+        ],
+        "tramos": [
+          "DE",
+          "DG",
+          "GH"
+        ],
+        "distancia_m": 920,
+        "tiempo_estimado_s": 120,
+        "costo_riesgo_relativo": 0.0,
+        "sin_informacion": [],
+        "suficiencia": "cobertura_sintetica_declarada"
+      }
+    ],
+    "no_disponibles": [],
+    "politica_faltantes": "Los perfiles con riesgo excluyen tramos sin información. Esto no demuestra que sean más seguros.",
+    "advertencia": "Resultados computacionales sobre datos ficticios; no son recomendaciones para la Ciudad de Guatemala."
+  },
+  "alcance": "Salida real del código sobre datos sintéticos. No es cartografía ni criminalidad observada."
+}

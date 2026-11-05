@@ -1,0 +1,8 @@
+flowchart LR
+ W[Cliente web implementado] -->|HTTP local y JSON| A[API Python]
+ K[Cliente Android en código] -. Compilación y dispositivo pendientes .-> A
+ A --> D[Dominio: estimación, Dijkstra y revisión]
+ D --> B[(SQLite local)]
+ E[Escenario sintético versionado] --> D
+ T[Pruebas automatizadas] --> A
+ T --> D
