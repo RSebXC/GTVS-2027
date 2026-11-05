@@ -1,6 +1,10 @@
 # GTVS: guía de la demostración V2
 
-Versión de trabajo: 2.0.0-demo.1. El prototipo utiliza cartografía real e incidentes exclusivamente ficticios. No ofrece garantías de seguridad ni navegación de emergencia.
+Versión de trabajo: 2.0.0-demo.2. El prototipo utiliza cartografía real e incidentes exclusivamente ficticios. No ofrece garantías de seguridad ni navegación de emergencia.
+
+Esta revisión corrige la extracción del JWT del SDK y la actualización del botón de cuenta. En la web, usar Ctrl+F5 para descargar la nueva interfaz. En Android, volver a ejecutar `app` o instalar el APK nuevo. La sesión puede renovarse desde Cuenta. No se exige verificar el correo para reportar en la demostración. El control de administrador permanece separado.
+
+La web permite cambiar entre claro y oscuro. En pantallas pequeñas, arrastrar la barra superior del panel para dejar más espacio al mapa o al formulario. Android utiliza un mapa completo con una cabecera compacta y un panel inferior ajustable; la tipografía de los controles se establece explícitamente en sans-serif.
 
 ## Abrir la web en esta computadora
 

@@ -15,3 +15,11 @@ Se excluyen documentos personales, bases locales y credenciales. Licencia pendie
 - Web compilada, nueve pruebas unitarias y dieciséis de integración contra API desplegada aprobadas. APK debug compilada; instalación física pendiente.
 - No se validó el riesgo con hechos reales, ni Google, ni entrega de correos. La revisión visual completa y la aprobación de alcance del asesor siguen pendientes.
 
+# 2.0.0-demo.2 — 2026-11-05
+
+- Corregida la lectura del JWT de Neon 0.8.2: se obtiene de la sesión del SDK, evitando el formato inconsistente de la respuesta en caché de `token()`.
+- El botón de cuenta refleja la identidad aunque falle la consulta de permisos. Las consultas públicas de web y Android no envían token.
+- Registro y reporte demostrativos sin confirmación de correo; controles de administrador separados.
+- Web con claro/oscuro, tarjetas de categorías y panel inferior ajustable. Android con mapa completo, cabecera compacta, panel ajustable y conservación del formulario al marcar su ubicación.
+- Once pruebas unitarias aprobadas; reproducción y regresión real del SDK documentadas. Google y revisión visual final pendientes de comprobar.
+

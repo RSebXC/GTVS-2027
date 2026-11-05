@@ -1,0 +1,24 @@
+sequenceDiagram
+  actor U as Colaborador
+  participant UI as Web o acceso web Android
+  participant SDK as SDK Neon Auth
+  participant AUTH as Neon Auth
+  participant API as API GTVS
+  participant DB as Postgres
+  U->>UI: Ingresar con correo o proveedor
+  UI->>SDK: signIn
+  SDK->>AUTH: Autenticación administrada
+  AUTH-->>SDK: Sesión
+  UI->>SDK: getSession()
+  SDK-->>UI: data.user + data.session.token
+  UI->>UI: Actualizar estado de cuenta
+  UI->>API: GET /api/me + Bearer JWT
+  API->>API: Validar firma y emisor
+  API->>DB: Consultar rol propio
+  DB-->>API: Permisos
+  API-->>UI: Identidad y permiso administrador
+  U->>UI: Enviar reporte ficticio
+  UI->>API: POST /api/reports + JWT + idempotencia
+  API->>DB: Insertar reporte pendiente
+  API-->>UI: Reporte recibido, sujeto a moderación
+  Note over UI,API: Consultas públicas de mapa y rutas sin JWT

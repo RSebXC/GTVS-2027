@@ -13,7 +13,7 @@ class ApiClient {
    val conn=URL(BuildConfig.API_URL+path).openConnection() as HttpURLConnection;connection=conn
    conn.connectTimeout=15000;conn.readTimeout=30000
    conn.setRequestProperty("Accept","application/json")
-   token?.let{conn.setRequestProperty("Authorization","Bearer $it")}
+   if(path=="/me"||path=="/reports"||path.startsWith("/admin/"))token?.let{conn.setRequestProperty("Authorization","Bearer $it")}
    if(body!=null){conn.requestMethod="POST";conn.doOutput=true;conn.setRequestProperty("Content-Type","application/json");key?.let{conn.setRequestProperty("Idempotency-Key",it)};conn.outputStream.use{it.write(body.toString().toByteArray(Charsets.UTF_8))}}
    val code=conn.responseCode
    val stream=if(code in 200..299)conn.inputStream else conn.errorStream

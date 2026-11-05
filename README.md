@@ -9,6 +9,8 @@ Prototipo académico de recomendación de rutas con riesgo estimado y reportes r
 
 **Demostración V2:** https://rsebxc.github.io/GTVS-2027/ · [Guía web y Android](docs/GUIA_V2.md).
 
+**Actualización demo.2:** corregido el error de token del SDK y el estado del botón de cuenta. Once pruebas unitarias aprobadas y prueba real de registro, salida, ingreso y reporte sin verificación por correo. Se añadió modo claro/oscuro web y panel inferior móvil ajustable; el APK Android se recompiló con la nueva distribución. [Diagnóstico y límites de verificación](docs/evidencias/v2/CORRECCION_SESION_DEMO_2.md).
+
 Para verla localmente, ejecutar `VER_WEB.cmd`. Para Android Studio abrir **`android/`** y seleccionar Gradle JDK 17. La API compartida está desplegada en Neon. El teléfono necesita Internet; no necesita que el backend esté ejecutándose en la PC.
 
 La V2 tiene mapa real, búsqueda, comparación de candidatos OSRM, reportes autenticados y moderación con Postgres. Las nueve pruebas unitarias y dieciséis comprobaciones de integración pasaron el 5 de noviembre de 2026 contra la API desplegada. La APK debug compiló; su instalación y uso en un teléfono todavía no están verificados. Google y entrega de códigos requieren prueba manual. Todo incidente continúa siendo ficticio.

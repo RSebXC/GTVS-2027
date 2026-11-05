@@ -659,7 +659,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		print-color-adjust: exact;
 		}
 	}
-html,body,#map{height:100%;margin:0}.leaflet-control-attribution{font-size:8px!important}.leaflet-popup-content{font-family:Arial;font-size:11px}</style></head><body><div id="map"></div><script>/* @preserve
+html,body,#map{height:100%;margin:0}.leaflet-control-attribution{font-size:8px!important;position:fixed;top:100px;right:0;bottom:auto}.leaflet-top{top:115px}.leaflet-control-zoom{border-radius:12px!important;overflow:hidden}.leaflet-popup-content{font-family:Arial;font-size:11px}</style></head><body><div id="map"></div><script>/* @preserve
  * Leaflet 1.9.4, a JS library for interactive maps. https://leafletjs.com
  * (c) 2010-2023 Vladimir Agafonkin, (c) 2010-2011 CloudMade
  */
@@ -669,6 +669,6 @@ const map=L.map('map').setView([14.628,-90.521],12);L.tileLayer('https://tile.op
 const context=L.layerGroup().addTo(map),lines=L.layerGroup().addTo(map);const points={};
 map.on('click',e=>GTVSMap.point(e.latlng.lng,e.latlng.lat));
 function setPoint(key,p){if(points[key])map.removeLayer(points[key]);points[key]=L.circleMarker([p[1],p[0]],{radius:8,color:'#fff',weight:3,fillColor:key==='origin'?'#143c59':'#138877',fillOpacity:1}).addTo(map);map.setView([p[1],p[0]],Math.max(14,map.getZoom()));}
-function showRoutes(routes,selected){lines.clearLayers();routes.forEach((r,i)=>{const p=r.geometry.coordinates.map(c=>[c[1],c[0]]);L.polyline(p,{color:i===selected?'#138877':'#a2acb7',weight:i===selected?6:3}).addTo(lines)});if(routes[selected])map.fitBounds(L.latLngBounds(routes[selected].geometry.coordinates.map(c=>[c[1],c[0]])),{padding:[25,25]});}
+function showRoutes(routes,selected){lines.clearLayers();routes.forEach((r,i)=>{const p=r.geometry.coordinates.map(c=>[c[1],c[0]]);L.polyline(p,{color:i===selected?'#138877':'#a2acb7',weight:i===selected?6:3}).addTo(lines)});if(routes[selected])map.fitBounds(L.latLngBounds(routes[selected].geometry.coordinates.map(c=>[c[1],c[0]])),{paddingTopLeft:[25,125],paddingBottomRight:[25,Math.min(innerHeight*.65,window.gtvsSheet||innerHeight*.47)]});}
 function showContext(incidents,restrictions){context.clearLayers();incidents.forEach(i=>{const text=document.createElement('div');text.textContent='SIMULACIÓN · '+i.title;L.circleMarker([i.latitude,i.longitude],{radius:6,color:'#fff',weight:2,fillColor:'#d69c55',fillOpacity:1}).bindPopup(text).addTo(context)});restrictions.forEach(r=>{const text=document.createElement('div');text.textContent='Restricción de prueba: '+r.reason;L.circle([r.latitude,r.longitude],{radius:r.radius_m,color:'#ac6653',fillOpacity:.1,dashArray:'5 5'}).bindPopup(text).addTo(context)});}
 </script></body></html>

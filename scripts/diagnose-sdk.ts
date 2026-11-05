@@ -1,0 +1,26 @@
+import {config} from 'dotenv';config({path:'.env.local',quiet:true});
+import {randomUUID,randomBytes} from 'node:crypto';
+import {createAuthClient} from '@neon/auth';
+import {BetterAuthVanillaAdapter} from '@neon/auth/vanilla/adapters';
+import {sessionJWT} from '../web/session-token.ts';
+import assert from 'node:assert/strict';
+const url=process.env.NEON_AUTH_BASE_URL!;
+const original=globalThis.fetch;let cookie='';
+globalThis.fetch=async(input,init)=>{const headers=new Headers(init?.headers);headers.set('Origin','https://rsebxc.github.io');if(cookie)headers.set('Cookie',cookie);const r=await original(input,{...init,headers});const incoming=r.headers.getSetCookie().map(c=>c.split(';')[0]);if(incoming.length)cookie=incoming.join('; ');return r;};
+const auth=createAuthClient(url,{adapter:BetterAuthVanillaAdapter()});
+const email='gtvs-sdk-'+randomUUID()+'@example.com',password=randomBytes(24).toString('base64url');
+const result=await auth.signUp.email({email,password,name:'Prueba SDK'});
+if(result.error)throw new Error(result.error.message);
+const session=await auth.getSession();
+const token=await (auth as any).token();
+console.log(JSON.stringify({sessionFound:!!session.data?.user,sessionTokenIsJWT:session.data?.session?.token?.split('.').length===3,tokenResponseKeys:Object.keys(token.data||{}),tokenResponseIsJWT:token.data?.token?.split('.').length===3}));
+const jwt=sessionJWT(session.data);const r=await original(process.env.GTVS_TEST_BASE_URL+'/api/me',{headers:{Authorization:'Bearer '+jwt}});assert.equal(r.status,200);console.log('JWT de sesión aceptado por API: HTTP '+r.status);
+await auth.signOut();
+const out=await auth.getSession();assert.ok(!out.data?.user);console.log('Salida y estado anónimo comprobados con SDK.');
+const signed=await auth.signIn.email({email,password});assert.ok(!signed.error);
+const restored=await auth.getSession();assert.ok(restored.data?.user);assert.equal(restored.data.user.emailVerified,false);
+const restoredJWT=sessionJWT(restored.data);
+const report=await original(process.env.GTVS_TEST_BASE_URL+'/api/reports',{method:'POST',headers:{Authorization:'Bearer '+restoredJWT,'Content-Type':'application/json','Idempotency-Key':randomUUID()},body:JSON.stringify({type:'otro',coordinate:[-90.521,14.628],description:'Simulación automática de regresión SDK, sin hecho real',severity:1,occurredAt:null,synthetic:true})});
+assert.equal(report.status,201);const data=await report.json() as any;
+const {pool}=await import('../src/db.ts');try{await pool.query('DELETE FROM gtvs.reports WHERE id=$1 AND user_id=$2',[data.report.id,restored.data.user.id]);}finally{await pool.end();}
+await auth.signOut();console.log('Ingreso posterior, restauración y reporte SIN verificación por correo: OK; reporte de prueba retirado.');

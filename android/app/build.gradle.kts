@@ -7,8 +7,8 @@ android {
   applicationId = "gt.edu.usac.gtvs"
   minSdk = 26
   targetSdk = 35
-  versionCode = 2
-  versionName = "2.0.0-demo.1"
+  versionCode = 3
+  versionName = "2.0.0-demo.2"
   buildConfigField("String","API_URL","\"https://br-morning-resonance-belnuka7-gtvsapi.compute.c-9.us-east-2.aws.neon.tech/api\"")
   buildConfigField("String","AUTH_WEB_URL","\"https://rsebxc.github.io/GTVS-2027/?mobile-auth=1\"")
  }
