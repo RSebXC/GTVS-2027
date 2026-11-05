@@ -27,6 +27,10 @@ try{
  const before=(await pool.query('SELECT count(*)::integer AS n FROM gtvs.incidents WHERE active')).rows[0].n;
  const payload={type:'obstruccion',description:'Simulación automática, no describe un hecho real.',coordinate:[-90.52,14.63],severity:3,occurredAt:new Date().toISOString(),synthetic:true};
  const key=randomUUID(),r=await call('/api/reports',a.token,payload,'POST',key);check(r.status===201&&r.body.report.state==='pending','reporte autenticado persistido como pendiente');reportIds.push(r.body.report.id);
+ check((await call('/api/reports/mine')).status===401,'mis reportes exige sesión');
+ check((await call('/api/reports/mine',a.token)).body.reports.some((x:any)=>x.id===r.body.report.id),'panel propio incluye el reporte del colaborador');
+ check(!(await call('/api/reports/mine',b.token)).body.reports.some((x:any)=>x.id===r.body.report.id),'otra cuenta no recibe el reporte privado del colaborador');
+ const publicData=await call('/api/incidents');check(publicData.body.incidents.filter((x:any)=>x.demo_batch==='presentacion-2026-11-v1').length===36&&publicData.body.incidents.every((x:any)=>x.synthetic===true),'carga pública contiene 36 escenarios identificados y solo incidentes ficticios');
  const repeat=await call('/api/reports',a.token,payload,'POST',key);check(repeat.body.report.id===r.body.report.id,'reenvío idempotente no duplica reporte');
  check((await call('/api/reports',a.token,{...payload,severity:4},'POST',key)).status===409,'clave con contenido distinto rechazada');
  check((await pool.query('SELECT count(*)::integer AS n FROM gtvs.incidents WHERE active')).rows[0].n===before,'pendiente no crea incidente');

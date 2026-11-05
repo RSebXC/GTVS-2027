@@ -1,6 +1,8 @@
 # GTVS: guía de la demostración V2
 
-Versión de trabajo: 2.0.0-demo.2. El prototipo utiliza cartografía real e incidentes exclusivamente ficticios. No ofrece garantías de seguridad ni navegación de emergencia.
+Versión de trabajo: 2.0.0-demo.3. El prototipo utiliza cartografía real e incidentes exclusivamente ficticios. No ofrece garantías de seguridad ni navegación de emergencia.
+
+Esta revisión incorpora 36 escenarios ficticios precargados, panel público y Mis reportes en la web, filtro de moderación, avisos de contexto de ruta e iconos vectoriales. Android incluye el panel público. [Guion de presentación y límites](DEMOSTRACION_INCIDENTES.md).
 
 Esta revisión corrige la extracción del JWT del SDK y la actualización del botón de cuenta. En la web, usar Ctrl+F5 para descargar la nueva interfaz. En Android, volver a ejecutar `app` o instalar el APK nuevo. La sesión puede renovarse desde Cuenta. No se exige verificar el correo para reportar en la demostración. El control de administrador permanece separado.
 
@@ -38,7 +40,7 @@ La interfaz toma como referencia grafito `#202a2d`, azul `#133f5b`, verde `#1476
 
 ## Pendientes reales
 
-- Prueba visual completa en navegador y prueba física del APK.
+- Prueba visual completa en navegador y prueba de uso de todas las pantallas Android. La instalación de demo.3 sí se comprobó por ADB y consulta de versión.
 - Inicio de sesión Google configurado y comprobado con el propietario; entrega de códigos y activación real del administrador.
 - Polígono municipal: actualmente se limita una caja geográfica aproximada; no representa el límite administrativo exacto.
 - Ubicación actual nativa, traducción y fotografías: no implementadas en Android. Web sí permite solicitar ubicación al pulsar el botón.

@@ -1,0 +1,83 @@
+{
+  "at": "2026-11-05T22:35:12.571Z",
+  "notice": "Respuestas reales del proveedor; incidentes ficticios; no son resultados de validación de riesgo.",
+  "results": [
+    {
+      "name": "Ejemplo centro-sur",
+      "origin": [
+        -90.5218,
+        14.6349
+      ],
+      "destination": [
+        -90.5352,
+        14.5905
+      ],
+      "candidates": 2,
+      "visible": 2,
+      "routes": [
+        {
+          "profiles": [
+            "rapida",
+            "equilibrada",
+            "menor_riesgo_estimado"
+          ],
+          "incidents": 6,
+          "index": 5.6048
+        },
+        {
+          "profiles": [],
+          "incidents": 9,
+          "index": 7.1427
+        }
+      ]
+    },
+    {
+      "name": "Ejemplo oeste-este",
+      "origin": [
+        -90.5505,
+        14.6201
+      ],
+      "destination": [
+        -90.5034,
+        14.6097
+      ],
+      "candidates": 1,
+      "visible": 1,
+      "routes": [
+        {
+          "profiles": [
+            "rapida",
+            "equilibrada",
+            "menor_riesgo_estimado"
+          ],
+          "incidents": 6,
+          "index": 8.5732
+        }
+      ]
+    },
+    {
+      "name": "Ejemplo oeste-sur",
+      "origin": [
+        -90.5505,
+        14.6201
+      ],
+      "destination": [
+        -90.5352,
+        14.5905
+      ],
+      "candidates": 1,
+      "visible": 1,
+      "routes": [
+        {
+          "profiles": [
+            "rapida",
+            "equilibrada",
+            "menor_riesgo_estimado"
+          ],
+          "incidents": 6,
+          "index": 6.966
+        }
+      ]
+    }
+  ]
+}

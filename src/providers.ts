@@ -21,5 +21,6 @@ export async function routing(origin:Coordinate,destination:Coordinate):Promise<
  const json=await response.json() as any;
  if(json.code!=='Ok'||!Array.isArray(json.routes))throw new Error('No se encontró una ruta vehicular entre los puntos.');
  const routes=json.routes.slice(0,5).filter((r:any)=>r.distance>0&&r.duration>0&&r.geometry?.type==='LineString').map((r:any)=>({geometry:r.geometry,distance:r.distance,duration:r.duration,provider:'OSRM / FOSSGIS · OpenStreetMap'}));
- if(cache.size>128)cache.clear();cache.set(key,{at:Date.now(),value:routes});return routes;
+ const distinct=[...new Map<string,Candidate>(routes.map((r:Candidate)=>[JSON.stringify(r.geometry.coordinates),r])).values()];
+ if(cache.size>128)cache.clear();cache.set(key,{at:Date.now(),value:distinct});return distinct;
 }

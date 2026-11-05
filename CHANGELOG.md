@@ -23,3 +23,11 @@ Se excluyen documentos personales, bases locales y credenciales. Licencia pendie
 - Web con claro/oscuro, tarjetas de categorías y panel inferior ajustable. Android con mapa completo, cabecera compacta, panel ajustable y conservación del formulario al marcar su ubicación.
 - Once pruebas unitarias aprobadas; reproducción y regresión real del SDK documentadas. Google y revisión visual final pendientes de comprobar.
 
+# 2.0.0-demo.3 — 2026-11-05
+
+- Panel público de incidentes y Mis reportes con aislamiento por usuario; filtros y resumen de moderación.
+- Lote reproducible de 36 escenarios ficticios, identificado por demo_batch, sin reportantes ni corroboraciones inventadas. Segunda carga: cero duplicados.
+- Todos los candidatos distintos de OSRM permanecen visibles aunque no ganen perfiles. Recorrido de demostración comprobado con dos candidatos; no se garantizan múltiples rutas para cualquier par de puntos.
+- Avisos de influencia por proximidad, iconos SVG propios y controles consistentes. Android incluye panel público e iconos vectoriales.
+- Doce pruebas unitarias y veinte comprobaciones de integración aprobadas. La estimación de riesgo sigue sin calibración empírica.
+

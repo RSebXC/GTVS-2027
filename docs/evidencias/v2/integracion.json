@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-05T20:36:09.393Z",
+  "at": "2026-11-05T22:25:55.329Z",
   "scope": "Datos ficticios; Neon Auth, Postgres y proveedores externos reales. Sin validación de riesgo urbano.",
   "results": [
     {
@@ -24,6 +24,22 @@
     },
     {
       "case": "reporte autenticado persistido como pendiente",
+      "ok": true
+    },
+    {
+      "case": "mis reportes exige sesión",
+      "ok": true
+    },
+    {
+      "case": "panel propio incluye el reporte del colaborador",
+      "ok": true
+    },
+    {
+      "case": "otra cuenta no recibe el reporte privado del colaborador",
+      "ok": true
+    },
+    {
+      "case": "carga pública contiene 36 escenarios identificados y solo incidentes ficticios",
       "ok": true
     },
     {

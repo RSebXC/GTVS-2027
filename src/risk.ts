@@ -36,5 +36,6 @@ export function rank(candidates:Candidate[],incidents:Incident[],flags:Flag[],at
  const fastest=Math.min(...assessed.map(c=>c.duration));
  const scores={rapida:(c:typeof assessed[number])=>c.duration, equilibrada:(c:typeof assessed[number])=>c.duration/fastest+0.35*c.risk.value+10*c.risk.restrictions.length,menor_riesgo_estimado:(c:typeof assessed[number])=>c.risk.value+0.05*c.duration/fastest+100*c.risk.restrictions.length};
  for(const [profile,score] of Object.entries(scores)){const winner=[...assessed].sort((a,b)=>score(a)-score(b))[0];winner.profiles.push(profile);}
- return assessed.filter(c=>c.profiles.length).map(c=>({...c,risk:{...c.risk,value:Number(c.risk.value.toFixed(4))}}));
+ // Mostrar también candidatos distintos que no ganaron un perfil: son alternativas reales del proveedor.
+ return assessed.map(c=>({...c,risk:{...c.risk,value:Number(c.risk.value.toFixed(4))}}));
 }

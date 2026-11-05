@@ -1,6 +1,8 @@
 # Diccionario del esquema implementado
 
-Fuente autoritativa: `db/001_gtvs.sql` y `db/002_admin_invitation.sql`. Si cambia el código, actualizar este documento junto con la migración. Los nombres siguientes corresponden al prototipo, no a entidades futuras pendientes.
+Fuente autoritativa: migraciones `db/001_gtvs.sql`, `db/002_admin_invitation.sql` y `db/003_demo_batch.sql`. Si cambia el código, actualizar este documento junto con la migración. Los nombres siguientes corresponden al prototipo, no a entidades futuras pendientes.
+
+La migración 003 añade `incidents.demo_batch text` opcional, con índice parcial. Distingue los escenarios precargados de incidentes creados mediante reportes; no representa una fuente real ni un estado de corroboración. Los escenarios siguen obligados a tener `synthetic=true`.
 
 | Tabla | Clave y relaciones | Atributos y propósito |
 |---|---|---|

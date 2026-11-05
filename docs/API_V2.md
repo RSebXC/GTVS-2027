@@ -14,6 +14,7 @@ JSON con coordenadas `[longitud, latitud]`. Fechas de ocurrencia en ISO 8601 con
 | GET `/restrictions` | Público | Hasta 100 restricciones activas ficticias |
 | POST `/routes` | Público | `origin`, `destination`; geometrías, perfiles, métricas e índice |
 | POST `/reports` | Sesión | Tipo, coordenada, descripción, gravedad, ocurrencia opcional, referencia y `synthetic:true`; reporte pendiente |
+| GET `/reports/mine` | Sesión | Hasta 100 reportes propios, filtrados en servidor por identidad del JWT |
 | GET `/admin/reports` | Administrador | Hasta 100 reportes con estado y revisión |
 | POST `/admin/reports/{id}/review` | Administrador | Decisión, motivo y revisión esperada; creación o vinculación de incidente |
 | POST `/admin/restrictions` | Administrador | Coordenada, radio, motivo, fecha de revisión y condición ficticia |
