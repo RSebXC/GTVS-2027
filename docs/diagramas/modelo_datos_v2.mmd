@@ -1,0 +1,59 @@
+erDiagram
+  AUTH_USER ||--o{ REPORTS : "identidad externa, sin FK propia"
+  AUTH_USER ||--o| ADMINS : "rol propio"
+  INCIDENTS o|--o{ REPORTS : consolida
+  REPORTS ||--o{ REVIEWS : registra
+  INCIDENTS o|--o{ REVIEWS : referencia
+  AUTH_USER ||--o{ RESTRICTIONS : "autor externo"
+  REPORTS {
+    uuid id PK
+    text user_id
+    text type
+    text description
+    double latitude
+    double longitude
+    timestamptz occurred_at
+    int severity
+    text source_url
+    boolean synthetic
+    text state
+    uuid incident_id FK
+    int revision
+    text idempotency_key
+    timestamptz created_at
+  }
+  INCIDENTS {
+    uuid id PK
+    text type
+    text title
+    double latitude
+    double longitude
+    timestamptz occurred_at
+    int severity
+    numeric confidence
+    boolean synthetic
+    text source_url
+    boolean active
+  }
+  REVIEWS {
+    uuid id PK
+    uuid report_id FK
+    text reviewer_id
+    text action
+    text reason
+    uuid incident_id FK
+    timestamptz created_at
+  }
+  RESTRICTIONS {
+    uuid id PK
+    double latitude
+    double longitude
+    int radius_m
+    text reason
+    boolean active
+    timestamptz review_at
+    text created_by
+  }
+  ADMINS {
+    text user_id PK
+  }

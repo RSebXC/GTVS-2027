@@ -1,0 +1,11 @@
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
+const css=await readFile('node_modules/leaflet/dist/leaflet.css','utf8'),js=await readFile('node_modules/leaflet/dist/leaflet.js','utf8');
+const html=`<!doctype html><html lang="es"><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>${css}html,body,#map{height:100%;margin:0}.leaflet-control-attribution{font-size:8px!important}.leaflet-popup-content{font-family:Arial;font-size:11px}</style></head><body><div id="map"></div><script>${js}</script><script>
+const map=L.map('map').setView([14.628,-90.521],12);L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',keepBuffer:1}).addTo(map);
+const context=L.layerGroup().addTo(map),lines=L.layerGroup().addTo(map);const points={};
+map.on('click',e=>GTVSMap.point(e.latlng.lng,e.latlng.lat));
+function setPoint(key,p){if(points[key])map.removeLayer(points[key]);points[key]=L.circleMarker([p[1],p[0]],{radius:8,color:'#fff',weight:3,fillColor:key==='origin'?'#143c59':'#138877',fillOpacity:1}).addTo(map);map.setView([p[1],p[0]],Math.max(14,map.getZoom()));}
+function showRoutes(routes,selected){lines.clearLayers();routes.forEach((r,i)=>{const p=r.geometry.coordinates.map(c=>[c[1],c[0]]);L.polyline(p,{color:i===selected?'#138877':'#a2acb7',weight:i===selected?6:3}).addTo(lines)});if(routes[selected])map.fitBounds(L.latLngBounds(routes[selected].geometry.coordinates.map(c=>[c[1],c[0]])),{padding:[25,25]});}
+function showContext(incidents,restrictions){context.clearLayers();incidents.forEach(i=>{const text=document.createElement('div');text.textContent='SIMULACIÓN · '+i.title;L.circleMarker([i.latitude,i.longitude],{radius:6,color:'#fff',weight:2,fillColor:'#d69c55',fillOpacity:1}).bindPopup(text).addTo(context)});restrictions.forEach(r=>{const text=document.createElement('div');text.textContent='Restricción de prueba: '+r.reason;L.circle([r.latitude,r.longitude],{radius:r.radius_m,color:'#ac6653',fillOpacity:.1,dashArray:'5 5'}).bindPopup(text).addTo(context)});}
+</script></body></html>`;
+await mkdir('android/app/src/main/assets',{recursive:true});await writeFile('android/app/src/main/assets/map.html',html);console.log('Mapa Leaflet preparado para Android; atribución visible.');

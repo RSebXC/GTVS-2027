@@ -7,8 +7,16 @@ Prototipo académico de recomendación de rutas con riesgo estimado y reportes r
 
 ## Versiones
 
+**Demostración V2:** https://rsebxc.github.io/GTVS-2027/ · [Guía web y Android](docs/GUIA_V2.md).
+
+Para verla localmente, ejecutar `VER_WEB.cmd`. Para Android Studio abrir **`android/`** y seleccionar Gradle JDK 17. La API compartida está desplegada en Neon. El teléfono necesita Internet; no necesita que el backend esté ejecutándose en la PC.
+
+La V2 tiene mapa real, búsqueda, comparación de candidatos OSRM, reportes autenticados y moderación con Postgres. Las nueve pruebas unitarias y dieciséis comprobaciones de integración pasaron el 5 de noviembre de 2026 contra la API desplegada. La APK debug compiló; su instalación y uso en un teléfono todavía no están verificados. Google y entrega de códigos requieren prueba manual. Todo incidente continúa siendo ficticio.
+
+Documentación del código actual: [arquitectura y límites](docs/ARQUITECTURA_V2.md), [API](docs/API_V2.md), [arquitectura editable](docs/diagramas/arquitectura_v2.mmd), [modelo de datos implementado](docs/diagramas/modelo_datos_v2.mmd). La licencia propia sigue pendiente de decisión del autor.
+
 - **V1 / v1.0.0:** demostración local reproducible con red abstracta, API Python, SQLite, interfaz web y código Android. Diecisiete pruebas funcionales registradas; Android todavía sin compilación e instalación verificadas.
-- **V2:** desarrollo separado para mapa real, selección de origen y destino, cuentas de colaboradores y moderación. Sus funciones se documentarán como realizadas solo después de comprobarlas. El alcance está pendiente de revisión con el asesor.
+- **V2 / develop/v2:** demostración web y Android con API compartida. El alcance académico está pendiente de revisión con el asesor. Los pendientes y la diferencia entre compilación y pruebas físicas se detallan en la guía.
 
 El año 2027 del repositorio identifica el proyecto previsto; el avance de noviembre de 2026 corresponde al curso y no a una tesis final aprobada.
 

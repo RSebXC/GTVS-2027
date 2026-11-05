@@ -1,0 +1,11 @@
+flowchart LR
+  W[Web estática · GitHub Pages] -->|HTTPS + JWT cuando corresponde| API[Neon Function · Hono]
+  A[Android · Kotlin y Leaflet] -->|HTTPS| API
+  W --> AUTH[Neon Auth]
+  A -->|Web de autenticación| AUTH
+  API -->|Verificación JWT y permisos| AUTH
+  API --> DB[(Postgres · esquema gtvs)]
+  API --> P[Photon · búsqueda]
+  API --> R[OSRM · candidatos de ruta]
+  W --> T[Teselas OpenStreetMap]
+  A --> T

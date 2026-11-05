@@ -1,0 +1,72 @@
+{
+  "at": "2026-11-05T20:36:09.393Z",
+  "scope": "Datos ficticios; Neon Auth, Postgres y proveedores externos reales. Sin validación de riesgo urbano.",
+  "results": [
+    {
+      "case": "consulta real a Neon Postgres",
+      "ok": true
+    },
+    {
+      "case": "reporte anónimo rechazado",
+      "ok": true
+    },
+    {
+      "case": "alta, salida, ingreso, sesión y JWT de dos cuentas reales de prueba",
+      "ok": true
+    },
+    {
+      "case": "JWT del proveedor validado por la API",
+      "ok": true
+    },
+    {
+      "case": "colaborador no puede consultar administración",
+      "ok": true
+    },
+    {
+      "case": "reporte autenticado persistido como pendiente",
+      "ok": true
+    },
+    {
+      "case": "reenvío idempotente no duplica reporte",
+      "ok": true
+    },
+    {
+      "case": "clave con contenido distinto rechazada",
+      "ok": true
+    },
+    {
+      "case": "pendiente no crea incidente",
+      "ok": true
+    },
+    {
+      "case": "administrador acepta y consolida evidencia",
+      "ok": true
+    },
+    {
+      "case": "vinculación de dos evidencias conserva un incidente",
+      "ok": true
+    },
+    {
+      "case": "revisión concurrente obsoleta rechazada",
+      "ok": true
+    },
+    {
+      "case": "restricción administrativa persistida con revisión",
+      "ok": true
+    },
+    {
+      "case": "restricción puede retirarse",
+      "ok": true
+    },
+    {
+      "case": "ruta real de OSRM consultada y evaluada con Neon",
+      "ok": true
+    },
+    {
+      "case": "búsqueda geográfica real de Photon",
+      "ok": true
+    }
+  ],
+  "failed": null,
+  "notes": "Se retiraron filas de prueba de GTVS y permisos temporales. Las cuentas de prueba sin datos personales permanecen en el servicio Auth; no se imprimen credenciales."
+}
