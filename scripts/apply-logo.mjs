@@ -1,0 +1,13 @@
+import {readFile,writeFile,copyFile,mkdir} from 'node:fs/promises';
+const image='logo-gtvs.jpg';
+let html=await readFile('web/index.html','utf8');
+html=html.replaceAll('src="./brand.svg"',`src="./${image}"`).replace('type="image/svg+xml" href="./brand.svg"',`type="image/jpeg" href="./${image}"`);
+if(!html.includes('class="header-logo"'))html=html.replace('<div class="brand-word">',`<div class="brand-word"><img class="header-logo" src="./${image}" alt="Logotipo GTVS">`);
+await writeFile('web/index.html',html);
+await mkdir('android/app/src/main/res/drawable-nodpi',{recursive:true});
+await copyFile('web/public/'+image,'android/app/src/main/res/drawable-nodpi/logo_gtvs.jpg');
+const manifest='android/app/src/main/AndroidManifest.xml';await writeFile(manifest,(await readFile(manifest,'utf8')).replace('@drawable/ic_gtvs','@drawable/logo_gtvs'));
+const file='android/app/src/main/java/gt/edu/usac/gtvs/MainActivity.kt';let kotlin=await readFile(file,'utf8');
+if(!kotlin.includes('setImageResource(R.drawable.logo_gtvs)'))kotlin=kotlin.replace('root.addView(text("GTVS",27f,true));','val identity=LinearLayout(this).apply{gravity=android.view.Gravity.CENTER_VERTICAL};identity.addView(ImageView(this).apply{setImageResource(R.drawable.logo_gtvs);contentDescription="Logotipo GTVS"},LinearLayout.LayoutParams(dp(56),dp(56)));identity.addView(text("  GTVS",27f,true));root.addView(identity);');
+await writeFile(file,kotlin);
+console.log('Logotipo original aplicado en web, cabecera e icono Android.');
