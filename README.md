@@ -9,6 +9,8 @@ Prototipo académico de recomendación de rutas con riesgo estimado y reportes r
 
 **Demostración V2:** https://rsebxc.github.io/GTVS-2027/ · [Guía web y Android](docs/GUIA_V2.md).
 
+**Actualización demo.4:** rutas simultáneas de alto contraste, incidentes por color, A/B destacados, emblema sin marco y formularios Android rediseñados. El escenario de desvío compara rutas reales OSRM que cruzan círculos ficticios con un candidato que los rodea; la búsqueda es acotada y no garantiza seguridad. [Diseño, pruebas y límites](docs/DESVIOS_Y_DISENO_DEMO_4.md).
+
 **Actualización demo.3:** panel público de incidentes, Mis reportes, 36 escenarios ficticios precargados, contexto de la ruta e iconos vectoriales. Se muestran también candidatos OSRM que no ganan un perfil. [Cómo presentar la demostración](docs/DEMOSTRACION_INCIDENTES.md). Los escenarios no son datos de criminalidad ni evidencia de validación del modelo.
 
 **Actualización demo.2:** corregido el error de token del SDK y el estado del botón de cuenta. Once pruebas unitarias aprobadas y prueba real de registro, salida, ingreso y reporte sin verificación por correo. Se añadió modo claro/oscuro web y panel inferior móvil ajustable; el APK Android se recompiló con la nueva distribución. [Diagnóstico y límites de verificación](docs/evidencias/v2/CORRECCION_SESION_DEMO_2.md).

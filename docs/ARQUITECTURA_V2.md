@@ -20,6 +20,8 @@ Para cada incidente único, el código combina gravedad, confiabilidad fija demo
 
 Los perfiles rápida, equilibrada y menor riesgo estimado seleccionan entre los candidatos recibidos; no ejecutan una búsqueda global sobre un grafo ponderado propio. Una restricción administrativa ficticia conserva influencia hasta su retiro y requiere fecha de revisión. No convierte una colonia o zona completa en una categoría permanente.
 
+Desde demo.4 se solicitan candidatos adicionales con dos puntos intermedios cuando existen cruces de restricciones. Se comprueba cada geometría contra todos los círculos activos; esta búsqueda está acotada a cuatro planes y puede no encontrar un desvío. [Diseño y límites](DESVIOS_Y_DISENO_DEMO_4.md).
+
 ## Seguridad y límites
 
 Los permisos se verifican en el servidor. Un cliente no puede declararse administrador. La invitación privada utiliza una huella del correo y exige verificación del proveedor. Los JWT se validan con claves públicas remotas. Los reportes requieren sesión e idempotencia; las escrituras de moderación utilizan transacciones. Existen límites básicos de cuerpo y solicitudes; no equivalen a una auditoría de seguridad ni a protección completa contra abuso.

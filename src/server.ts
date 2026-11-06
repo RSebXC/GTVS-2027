@@ -6,10 +6,12 @@ import {createRemoteJWKSet,jwtVerify} from 'jose';
 import {randomUUID,createHash} from 'node:crypto';
 import {pool} from './db.ts';
 import {coordinate,rank,MODEL,VIEW_BOUNDS,meters,type Incident,type Flag} from './risk.ts';
-import {routing,searchPlaces} from './providers.ts';
+import {expandCandidates} from './avoidance';
+import {routing,routingVia,searchPlaces} from './providers.ts';
 
 type Variables={userId:string;admin:boolean};
 const app=new Hono<{Variables:Variables}>();
+const API_VERSION='2.0.0-demo.4';
 const types=['robo_ataque','obstruccion','cierre','otro'];
 const origins=['http://localhost:5173','http://127.0.0.1:5173','http://localhost:8787','http://127.0.0.1:8787','https://rsebxc.github.io'];
 app.use('*',cors({origin:o=>origins.includes(o)?o:'',allowHeaders:['Authorization','Content-Type','Idempotency-Key'],allowMethods:['GET','POST','PATCH','OPTIONS'],maxAge:600}));
@@ -52,8 +54,8 @@ async function limit(c:any,scope:string,max:number){
 }
 function signed(c:any){if(!c.get('userId'))return c.json({error:'Inicia sesión para registrar un reporte.'},401);return null;}
 function admin(c:any){return signed(c)||(!c.get('admin')?c.json({error:'Esta operación requiere administrador.'},403):null);}
-app.get('/api/health',async c=>{await pool.query('SELECT 1');return c.json({ok:true,version:'2.0.0-dev.1',database:'Neon Postgres',synthetic:true});});
-app.get('/api/config',c=>c.json({name:'GTVS',version:'2.0.0-dev.1',bounds:VIEW_BOUNDS,scope:'Ámbito geográfico de demostración; límite municipal oficial pendiente de integrar.',model:MODEL,types,synthetic:true,authUrl:process.env.NEON_AUTH_BASE_URL,notice:'Mapa real, incidentes ficticios. No usar para evaluar la seguridad real de un lugar.'}));
+app.get('/api/health',async c=>{await pool.query('SELECT 1');return c.json({ok:true,version:API_VERSION,database:'Neon Postgres',synthetic:true});});
+app.get('/api/config',c=>c.json({name:'GTVS',version:API_VERSION,bounds:VIEW_BOUNDS,scope:'Ámbito geográfico de demostración; límite municipal oficial pendiente de integrar.',model:MODEL,types,synthetic:true,authUrl:process.env.NEON_AUTH_BASE_URL,notice:'Mapa real, incidentes ficticios. No usar para evaluar la seguridad real de un lugar.'}));
 app.get('/api/me',c=>signed(c)||c.json({userId:c.get('userId'),admin:c.get('admin')}));
 app.get('/api/search',async c=>{await limit(c,'search',12);return c.json({places:await searchPlaces(text(c.req.query('q'),3,140)),provider:'Photon / OpenStreetMap'});});
 app.get('/api/incidents',async c=>{const {rows}=await pool.query('SELECT id,type,title,latitude,longitude,occurred_at,severity,confidence,source_url,synthetic,demo_batch FROM gtvs.incidents WHERE active AND synthetic ORDER BY occurred_at DESC LIMIT 300');return c.json({incidents:rows,synthetic:true});});
@@ -64,7 +66,7 @@ app.post('/api/routes',async c=>{
  const candidates=await routing(origin,destination);
  const client=await pool.connect();let incidents:Incident[],flags:Flag[];
  try{await client.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY');incidents=(await client.query('SELECT id,type,title,latitude,longitude,severity,confidence,occurred_at FROM gtvs.incidents WHERE active AND synthetic ORDER BY occurred_at DESC LIMIT 1000')).rows;flags=(await client.query('SELECT id,latitude,longitude,radius_m,reason,active,review_at FROM gtvs.restrictions WHERE active AND synthetic LIMIT 100')).rows;await client.query('COMMIT');}catch(e){await client.query('ROLLBACK');throw e;}finally{client.release();}
- const at=Date.now();return c.json({routes:rank(candidates,incidents,flags,at),candidates:candidates.length,calculatedAt:new Date(at).toISOString(),synthetic:true,model:MODEL,limitations:['Se reordenan candidatos de OSRM; no es optimización global sobre todos los caminos.','Un costo nulo no demuestra riesgo real bajo. La cobertura es desconocida.','Las restricciones administrativas penalizan candidatos, pero no garantizan que el proveedor genere un desvío.']});
+ const expanded=await expandCandidates(origin,destination,candidates,flags,routingVia);const at=Date.now();return c.json({routes:rank(expanded.routes,incidents,flags,at),candidates:expanded.routes.length,avoidance:{attempted:expanded.attempted,failed:expanded.failed,method:"Puntos intermedios y comprobación geométrica; búsqueda acotada, sin garantía global."},calculatedAt:new Date(at).toISOString(),synthetic:true,model:MODEL,limitations:['Se reordenan candidatos de OSRM; no es optimización global sobre todos los caminos.','Un costo nulo no demuestra riesgo real bajo. La cobertura es desconocida.','Las restricciones administrativas penalizan candidatos, pero no garantizan que el proveedor genere un desvío.']});
 });
 app.post('/api/reports',async c=>{
  const denied=signed(c);if(denied)return denied;await limit(c,'report',8);const fields=incidentFields(await c.req.json());const key=text(c.req.header('Idempotency-Key'),8,100);

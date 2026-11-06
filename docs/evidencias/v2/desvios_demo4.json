@@ -1,0 +1,117 @@
+{
+  "at": "2026-11-06T04:25:06.476Z",
+  "notice": "Sectores inventados y candidatos OSRM reales. No valida seguridad urbana.",
+  "results": [
+    {
+      "name": "Círculo ficticio referencia El Gallito",
+      "origin": [
+        -90.541,
+        14.636
+      ],
+      "destination": [
+        -90.516,
+        14.636
+      ],
+      "avoidance": {
+        "attempted": 2,
+        "failed": 0,
+        "method": "Puntos intermedios y comprobación geométrica; búsqueda acotada, sin garantía global."
+      },
+      "routes": [
+        {
+          "profiles": [
+            "rapida"
+          ],
+          "via": [],
+          "crossings": 1,
+          "distance": 6235.6,
+          "duration": 542.6,
+          "index": 1.5062
+        },
+        {
+          "profiles": [],
+          "via": [],
+          "crossings": 1,
+          "distance": 7549.1,
+          "duration": 598.1,
+          "index": 0
+        },
+        {
+          "profiles": [
+            "equilibrada",
+            "menor_riesgo_estimado"
+          ],
+          "via": [
+            [
+              -90.54030936392452,
+              14.618079283848195
+            ],
+            [
+              -90.52242643607548,
+              14.618079283848195
+            ]
+          ],
+          "crossings": 0,
+          "distance": 8918.6,
+          "duration": 976.1,
+          "index": 0.0136
+        },
+        {
+          "profiles": [],
+          "via": [
+            [
+              -90.54030936392452,
+              14.651483016151806
+            ],
+            [
+              -90.52242643607548,
+              14.651483016151806
+            ]
+          ],
+          "crossings": 1,
+          "distance": 11664.5,
+          "duration": 1120.1,
+          "index": 0.2834
+        }
+      ]
+    },
+    {
+      "name": "Círculo ficticio referencia Landívar",
+      "origin": [
+        -90.546,
+        14.6218
+      ],
+      "destination": [
+        -90.526,
+        14.6218
+      ],
+      "avoidance": {
+        "attempted": 0,
+        "failed": 0,
+        "method": "Puntos intermedios y comprobación geométrica; búsqueda acotada, sin garantía global."
+      },
+      "routes": [
+        {
+          "profiles": [
+            "rapida",
+            "equilibrada",
+            "menor_riesgo_estimado"
+          ],
+          "via": [],
+          "crossings": 0,
+          "distance": 3670.8,
+          "duration": 306.4,
+          "index": 0.0723
+        },
+        {
+          "profiles": [],
+          "via": [],
+          "crossings": 0,
+          "distance": 3749,
+          "duration": 307.7,
+          "index": 0.0956
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+flowchart TD
+  A[Origen y destino] --> B[Solicitar candidatos OSRM]
+  B --> C[Comprobar geometría contra círculos de prueba activos]
+  C --> D{Hay cruces?}
+  D -- No --> H[Estimar riesgo y comparar perfiles]
+  D -- Sí --> E[Preparar hasta cuatro planes con dos puntos intermedios]
+  E --> F[Solicitar candidatos por la red vial]
+  F --> G[Comprobar todos los círculos y eliminar geometrías idénticas]
+  G --> H
+  H --> I[Mostrar todas las rutas, cruces, tiempo y distancia]
+  I --> J[Sin cruces no significa seguridad; puede no encontrarse desvío]

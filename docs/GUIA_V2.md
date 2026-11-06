@@ -1,6 +1,8 @@
 # GTVS: guía de la demostración V2
 
-Versión de trabajo: 2.0.0-demo.3. El prototipo utiliza cartografía real e incidentes exclusivamente ficticios. No ofrece garantías de seguridad ni navegación de emergencia.
+Versión de trabajo: 2.0.0-demo.4. El prototipo utiliza cartografía real e incidentes exclusivamente ficticios. No ofrece garantías de seguridad ni navegación de emergencia.
+
+Demo.4 añade desvíos por puntos intermedios y comprobación de cruces, colores distinguibles para todas las rutas, marcadores A/B de mayor contraste y logotipo con transparencia exterior. Pulsa **Ensayar un desvío ficticio** para cargar el escenario y calcularlo. [Qué se implementó y qué límites tiene](DESVIOS_Y_DISENO_DEMO_4.md).
 
 Esta revisión incorpora 36 escenarios ficticios precargados, panel público y Mis reportes en la web, filtro de moderación, avisos de contexto de ruta e iconos vectoriales. Android incluye el panel público. [Guion de presentación y límites](DEMOSTRACION_INCIDENTES.md).
 

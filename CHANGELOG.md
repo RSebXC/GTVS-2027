@@ -31,3 +31,11 @@ Se excluyen documentos personales, bases locales y credenciales. Licencia pendie
 - Avisos de influencia por proximidad, iconos SVG propios y controles consistentes. Android incluye panel público e iconos vectoriales.
 - Doce pruebas unitarias y veinte comprobaciones de integración aprobadas. La estimación de riesgo sigue sin calibración empírica.
 
+# 2.0.0-demo.4 — 2026-11-05
+
+- Búsqueda acotada de candidatos con dos puntos intermedios, agrupación de sectores próximos y comprobación de geometrías contra todos los círculos activos.
+- Tres círculos explícitamente ficticios con referencias geográficas solicitadas; sin clasificación real de barrios ni promesa de seguridad.
+- Rutas simultáneas numeradas y a color, avisos de cruce, tiempo adicional, incidentes por tipo y A/B destacados en ambos temas.
+- Emblema sin marco como recurso separado; original conservado. Android con buscadores compactos, tarjetas, categorías de reporte y selectores nativos de fecha/hora.
+- Caso real del proveedor registrado con cuatro candidatos y uno sin cruces de los círculos ficticios. Parámetros y riesgo sin validación empírica.
+

@@ -1,7 +1,7 @@
 export type Coordinate = [number,number]; // longitud, latitud (GeoJSON)
 export interface Incident {id:string; latitude:number; longitude:number; severity:number; confidence:number; occurred_at:string; type:string; title?:string}
 export interface Flag {id:string;latitude:number;longitude:number;radius_m:number;reason:string;active:boolean;review_at:string}
-export interface Candidate {geometry:{type:'LineString';coordinates:Coordinate[]};distance:number;duration:number;provider:string}
+export interface Candidate {geometry:{type:'LineString';coordinates:Coordinate[]};distance:number;duration:number;provider:string;via?:Coordinate[]}
 export const MODEL={version:'gtvs-demo-2.0',halfLifeDays:7,radiusMeters:350,notice:'Parámetros ilustrativos; no calibrados para Guatemala.'};
 // Bbox de interfaz, no equivale al límite administrativo oficial del municipio.
 export const VIEW_BOUNDS={west:-90.69,south:14.45,east:-90.35,north:14.8};

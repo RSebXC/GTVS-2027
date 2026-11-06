@@ -29,9 +29,9 @@ El script rechaza una vinculación distinta de `demo-v2`. Utiliza identificadore
 
 OSRM genera los candidatos. GTVS compara sus métricas, estima influencia de incidentes ficticios y asigna los perfiles rápida, equilibrada y menor riesgo estimado. Los perfiles pueden coincidir en un recorrido. Esta revisión conserva visibles también los candidatos adicionales que no ganan un perfil, en lugar de ocultarlos.
 
-Esto no crea desvíos nuevos: si OSRM devuelve un candidato, se presenta uno. Tampoco se garantiza encontrar el mínimo global de riesgo ni evitar una restricción administrativa. La búsqueda sobre un grafo ponderado propio sigue pendiente.
+En demo.3 se mostraban solo los candidatos de la consulta directa. Desde demo.4, al detectar cruces se ensayan consultas adicionales con puntos intermedios y se comprueban sus geometrías. No se garantiza encontrar el mínimo global ni un desvío compatible. La búsqueda sobre un grafo ponderado propio sigue pendiente.
 
-El botón **Probar recorrido de demostración** selecciona `[-90.5218,14.6349]` y `[-90.5352,14.5905]`. En la comprobación registrada el 5 de noviembre de 2026, OSRM devolvió dos candidatos y se mostraron ambos. Los tres perfiles eligieron el primero. Otros dos recorridos consultados devolvieron un candidato cada uno. Son respuestas puntuales de un servicio externo, no garantías de disponibilidad futura ni resultados de validación de seguridad. Véase `docs/evidencias/v2/recorridos_demo3.json`.
+El escenario original de demo.3 seleccionaba `[-90.5218,14.6349]` y `[-90.5352,14.5905]`; su registro histórico está en `docs/evidencias/v2/recorridos_demo3.json`. El botón actual **Ensayar un desvío ficticio** carga otro escenario: `[-90.541,14.636]` y `[-90.516,14.636]`, y calcula sus candidatos. [Registro y explicación actual](DESVIOS_Y_DISENO_DEMO_4.md). Las respuestas del proveedor no son garantías de disponibilidad futura ni validación de seguridad.
 
 ## Contexto de la ruta
 
@@ -43,6 +43,6 @@ Cada incidente distinto puede contribuir al índice. Tres hechos cercanos suman 
 
 1. Abrir Reportes y mostrar que los escenarios están etiquetados como ficticios.
 2. Filtrar por tipo y por fecha; ubicar un registro en el mapa.
-3. Ir a Rutas y pulsar Probar recorrido de demostración. Comparar candidatos reales y revisar el aviso de contexto.
+3. Ir a Rutas y pulsar Ensayar un desvío ficticio. Comparar candidatos reales y revisar los avisos de cruce, tiempo adicional y contexto.
 4. Ingresar un reporte desde una cuenta, mostrar su estado pendiente en Mis reportes y revisarlo desde Gestión con el administrador.
 5. Actualizar el mapa en Android para mostrar la base compartida. No presentar el índice ilustrativo como una medición validada de seguridad urbana.
